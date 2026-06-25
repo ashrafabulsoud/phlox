@@ -130,8 +130,8 @@ class WhisperModelManager:
     """Manages Whisper model downloads and listing."""
 
     def __init__(self):
-        # Models stored in data_dir/phlox/whisper_models
-        self.models_dir = get_data_dir() / "phlox" / "whisper_models"
+        # Models stored in data_dir/siyadascribe/whisper_models
+        self.models_dir = get_data_dir() / "siyadascribe" / "whisper_models"
         self.models_dir.mkdir(parents=True, exist_ok=True)
 
     def get_available_models(self) -> list[dict]:
@@ -265,7 +265,7 @@ class WhisperModelManager:
                 httpx.AsyncClient(
                     timeout=timeout,
                     follow_redirects=True,
-                    headers={"User-Agent": "phlox"},
+                    headers={"User-Agent": "siyadascribe"},
                 ) as client,
                 client.stream("GET", url) as response,
             ):
@@ -321,7 +321,7 @@ class WhisperModelManager:
                         httpx.AsyncClient(
                             timeout=timeout,
                             follow_redirects=True,
-                            headers={"User-Agent": "phlox"},
+                            headers={"User-Agent": "siyadascribe"},
                         ) as client,
                         client.stream("GET", coreml_url) as response,
                     ):
@@ -426,7 +426,7 @@ class WhisperModelManager:
 
     def _get_model_selection_file_path(self) -> Path:
         """Get the path to the model selection file."""
-        return get_data_dir() / "phlox" / "whisper_model.txt"
+        return get_data_dir() / "siyadascribe" / "whisper_model.txt"
 
     def _write_model_selection_file(self, model_id: str) -> None:
         """Write the selected model ID to a file for Tauri to read."""

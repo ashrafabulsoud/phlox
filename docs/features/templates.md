@@ -1,6 +1,6 @@
 # Flexible Template System
 
-Phlox includes a template system for structuring clinical notes. Templates consist of fields that can be customized with prompts, formatting rules, and persistence settings
+SiyadaScribe includes a template system for structuring clinical notes. Templates consist of fields that can be customized with prompts, formatting rules, and persistence settings
 
 ## Features
 

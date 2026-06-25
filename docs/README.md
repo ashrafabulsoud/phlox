@@ -1,6 +1,6 @@
-# Phlox Documentation
+# SiyadaScribe Documentation
 
-Welcome to the Phlox documentation! This site provides comprehensive information about Phlox, an open-source patient management and AI assistant solution.
+Welcome to the SiyadaScribe documentation! This site provides comprehensive information about SiyadaScribe, an open-source patient management and AI assistant solution.
 
 ## Table of Contents
 
@@ -20,4 +20,4 @@ Welcome to the Phlox documentation! This site provides comprehensive information
 
 For a quick start, refer to the [Setup and Installation](./setup.md) guide. To understand the project's philosophy and core concepts, read the [Overview](./overview.md).
 
-Explore the documentation to learn more about each feature, the system architecture, and how to use Phlox effectively. Remember to carefully review the [Warnings, Limitations, and Regulatory Considerations](./warnings.md) before using Phlox.
+Explore the documentation to learn more about each feature, the system architecture, and how to use SiyadaScribe effectively. Remember to carefully review the [Warnings, Limitations, and Regulatory Considerations](./warnings.md) before using SiyadaScribe.

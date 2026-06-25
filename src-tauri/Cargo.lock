@@ -2800,7 +2800,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "phlox"
+name = "siyadascribe"
 version = "0.11.0"
 dependencies = [
  "cocoa",
@@ -2809,7 +2809,7 @@ dependencies = [
  "libc",
  "log",
  "objc",
- "phlox-pm",
+ "siyadascribe-pm",
  "serde",
  "serde_json",
  "sysinfo",
@@ -2824,7 +2824,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "phlox-pm"
+name = "siyadascribe-pm"
 version = "0.1.0"
 dependencies = [
  "dirs 5.0.1",

@@ -1,5 +1,5 @@
 """
-Shared embedding functions for the Phlox server.
+Shared embedding functions for the SiyadaScribe server.
 """
 
 from typing import Union, cast

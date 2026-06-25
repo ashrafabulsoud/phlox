@@ -1,5 +1,5 @@
 [project]
-name = "phlox-server"
+name = "siyadascribe-server"
 version = "1.0.5"
 requires-python = ">=3.12"
 dependencies = [
@@ -28,7 +28,7 @@ rag = [
     "tiktoken==0.12.0",
 ]
 docker = [
-    "phlox-server[rag]",
+    "siyadascribe-server[rag]",
 ]
 dev = [
     "pytest==9.0.3",

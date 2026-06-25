@@ -33,7 +33,7 @@ const ChangelogModal = ({ isOpen, onClose, version, changelog }) => {
             <ModalContent className="modal-style">
                 <ModalHeader>
                     <HStack>
-                        <Image src="/logo.webp" alt="Phlox Logo" width="30px" />
+                        <Image src="/logo.webp" alt="SiyadaScribe Logo" width="30px" />
                         <Text>Changelog v{version}</Text>
                     </HStack>
                 </ModalHeader>

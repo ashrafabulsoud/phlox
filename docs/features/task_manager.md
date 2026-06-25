@@ -2,7 +2,7 @@
 
 The task manager automatically extracts action items from clinical notes and tracks their completion status.
 
-Phlox also has a basic ToDo feature for general tasks. These appear in the Agent Dashboard.
+SiyadaScribe also has a basic ToDo feature for general tasks. These appear in the Agent Dashboard.
 
 ## Usage
 

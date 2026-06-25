@@ -92,7 +92,7 @@ export const PersonalStep = ({
             Your Specialty
           </FormLabel>
           <Tooltip
-            label="Your medical specialty helps Phlox provide more relevant assistance and suggestions"
+            label="Your medical specialty helps SiyadaScribe provide more relevant assistance and suggestions"
             placement="top"
             hasArrow
             fontSize="xs"

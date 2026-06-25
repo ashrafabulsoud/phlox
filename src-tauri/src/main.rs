@@ -53,7 +53,7 @@ pub fn run() {
         .targets([
             Target::new(TargetKind::Stdout),
             Target::new(TargetKind::LogDir {
-                file_name: Some("phlox-app.log".into()),
+                file_name: Some("siyadascribe-app.log".into()),
             }),
         ])
         .level(LevelFilter::Debug)
@@ -191,8 +191,8 @@ fn launch_process_manager() -> Result<(), Box<dyn std::error::Error>> {
         .parent()
         .ok_or("Failed to get executable directory")?;
 
-    // Look for phlox-pm in the same directory
-    let pm_path = exe_dir.join("phlox-pm");
+    // Look for siyadascribe-pm in the same directory
+    let pm_path = exe_dir.join("siyadascribe-pm");
 
     #[cfg(target_os = "windows")]
     let pm_path = pm_path.with_extension("exe");
@@ -207,11 +207,11 @@ fn launch_process_manager() -> Result<(), Box<dyn std::error::Error>> {
             exe_dir
                 .parent()
                 .and_then(|p| p.parent())
-                .map(|p| p.join("target").join("debug").join("phlox-pm")),
+                .map(|p| p.join("target").join("debug").join("siyadascribe-pm")),
             exe_dir
                 .parent()
                 .and_then(|p| p.parent())
-                .map(|p| p.join("target").join("release").join("phlox-pm")),
+                .map(|p| p.join("target").join("release").join("siyadascribe-pm")),
         ];
 
         for dev_path in dev_pm_paths.iter().filter_map(|p| p.as_ref()) {

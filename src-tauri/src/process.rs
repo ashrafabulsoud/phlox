@@ -38,15 +38,15 @@ impl Default for RestartCoordinator {
 
 /// Get the PID file path for a service
 fn pid_file_for_service(service: &str) -> Option<PathBuf> {
-    dirs::data_dir().map(|data_dir| data_dir.join("phlox").join(format!("{}.pid", service)))
+    dirs::data_dir().map(|data_dir| data_dir.join("siyadascribe").join(format!("{}.pid", service)))
 }
 
 /// Write a PID file after successful process spawn
 pub fn write_pid_file(service: &str, pid: u32) {
     if let Some(pid_file) = pid_file_for_service(service) {
         if let Some(data_dir) = dirs::data_dir() {
-            let phlox_dir = data_dir.join("phlox");
-            std::fs::create_dir_all(&phlox_dir).ok();
+            let siyadascribe_dir = data_dir.join("siyadascribe");
+            std::fs::create_dir_all(&siyadascribe_dir).ok();
         }
         if let Err(e) = std::fs::write(&pid_file, pid.to_string()) {
             log::warn!("Failed to write PID file for {}: {}", service, e);
@@ -203,9 +203,9 @@ pub fn kill_all_processes() {
     }
 
     // Fallback: kill by name pattern for any orphaned processes
-    kill_process_by_name("phlox-llama-server", "phlox-llama-server");
-    kill_process_by_name("phlox-whisper-server", "phlox-whisper-server");
-    kill_process_by_name("phlox-server", "phlox-server");
+    kill_process_by_name("siyadascribe-llama-server", "siyadascribe-llama-server");
+    kill_process_by_name("siyadascribe-whisper-server", "siyadascribe-whisper-server");
+    kill_process_by_name("siyadascribe-server", "siyadascribe-server");
 
     // Final wait to ensure all processes are gone
     thread::sleep(Duration::from_millis(500));
@@ -215,27 +215,27 @@ pub fn kill_all_processes() {
 
 pub fn cleanup_stale_files() {
     if let Some(data_dir) = dirs::data_dir() {
-        let phlox_dir = data_dir.join("phlox");
+        let siyadascribe_dir = data_dir.join("siyadascribe");
 
         // Clean up port files
-        let port_file = phlox_dir.join("server_port.txt");
+        let port_file = siyadascribe_dir.join("server_port.txt");
         if port_file.exists() {
             let _ = std::fs::remove_file(&port_file);
         }
 
-        let llm_port_file = phlox_dir.join("llm_port.txt");
+        let llm_port_file = siyadascribe_dir.join("llm_port.txt");
         if llm_port_file.exists() {
             let _ = std::fs::remove_file(&llm_port_file);
         }
 
-        let whisper_port_file = phlox_dir.join("whisper_port.txt");
+        let whisper_port_file = siyadascribe_dir.join("whisper_port.txt");
         if whisper_port_file.exists() {
             let _ = std::fs::remove_file(&whisper_port_file);
         }
 
         // Clean up PID files
         for service in ["llama", "whisper", "server"] {
-            let pid_file = phlox_dir.join(format!("{}.pid", service));
+            let pid_file = siyadascribe_dir.join(format!("{}.pid", service));
             if pid_file.exists() {
                 let _ = std::fs::remove_file(&pid_file);
             }

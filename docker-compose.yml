@@ -1,16 +1,16 @@
 services:
-  phlox:
+  siyadascribe:
     build:
       context: .
       dockerfile: Dockerfile
     # Prefer a prebuilt image? Comment out `build:` above and use your registry:
-    # image: registry.siyadalab.com/phlox:latest
+    # image: registry.siyadalab.com/siyadascribe:latest
     restart: unless-stopped
     environment:
       # Required
       - DB_ENCRYPTION_KEY=${DB_ENCRYPTION_KEY}
       - TZ=${TZ}
-      # CORS — must match the origin you load Phlox from (needed for browser mic recording)
+      # CORS — must match the origin you load SiyadaScribe from (needed for browser mic recording)
       - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
       # Optional LLM tuning
       - LLM_EXTRA_BODY=${LLM_EXTRA_BODY}
@@ -21,20 +21,20 @@ services:
       # Optional rate limiting
       - RATE_LIMIT_ENABLED=${RATE_LIMIT_ENABLED}
     volumes:
-      - phlox_data:/usr/src/app/data
-      - phlox_logs:/usr/src/app/logs
+      - siyadascribe_data:/usr/src/app/data
+      - siyadascribe_logs:/usr/src/app/logs
     networks:
       - dokploy-network
     labels:
       - traefik.enable=true
-      - traefik.http.routers.phlox.rule=Host(`${PHLOX_DOMAIN}`)
-      - traefik.http.routers.phlox.entrypoints=websecure
-      - traefik.http.routers.phlox.tls.certresolver=letsencrypt
-      - traefik.http.services.phlox.loadbalancer.server.port=5000
+      - traefik.http.routers.siyadascribe.rule=Host(`${SIYADASCRIBE_DOMAIN}`)
+      - traefik.http.routers.siyadascribe.entrypoints=websecure
+      - traefik.http.routers.siyadascribe.tls.certresolver=letsencrypt
+      - traefik.http.services.siyadascribe.loadbalancer.server.port=5000
 
 volumes:
-  phlox_data:
-  phlox_logs:
+  siyadascribe_data:
+  siyadascribe_logs:
 
 networks:
   dokploy-network:

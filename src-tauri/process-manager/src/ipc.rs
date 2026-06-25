@@ -12,9 +12,9 @@ use std::time::Duration;
 
 /// Get the socket path
 pub fn socket_path() -> PathBuf {
-    crate::process::phlox_dir()
+    crate::process::siyadascribe_dir()
         .expect("Failed to get data directory")
-        .join("phlox_pm.sock")
+        .join("siyadascribe_pm.sock")
 }
 
 /// Handle a client connection

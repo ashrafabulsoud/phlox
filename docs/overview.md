@@ -1,8 +1,8 @@
-# Phlox Overview
+# SiyadaScribe Overview
 
-## What is Phlox?
+## What is SiyadaScribe?
 
-Phlox is an open-source, local-first clinical tool with the following features:
+SiyadaScribe is an open-source, local-first clinical tool with the following features:
 
 - **Patient Records:** Basic database for patient demographics and history
 - **Medical Transcription:** Uses Whisper + local or remote LLMs to convert audio to structured notes

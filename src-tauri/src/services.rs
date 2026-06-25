@@ -9,8 +9,8 @@ use crate::process::{is_process_running_from_pid, write_pid_file};
 pub fn find_llama_model(models_dir: &std::path::Path) -> Option<std::path::PathBuf> {
     // First try reading from llm_model.txt if it exists
     if let Some(data_dir) = dirs::data_dir() {
-        let phlox_dir = data_dir.join("phlox");
-        let model_file = phlox_dir.join("llm_model.txt");
+        let siyadascribe_dir = data_dir.join("siyadascribe");
+        let model_file = siyadascribe_dir.join("llm_model.txt");
         if let Ok(model_filename) = std::fs::read_to_string(&model_file) {
             let model_filename = model_filename.trim();
             let model_path = models_dir.join(model_filename);
@@ -63,7 +63,7 @@ pub fn start_llama() -> Result<Child, Box<dyn std::error::Error>> {
 
     // Set up models directory in app data
     let models_dir = if let Some(data_dir) = dirs::data_dir() {
-        let dir = data_dir.join("phlox").join("llm_models");
+        let dir = data_dir.join("siyadascribe").join("llm_models");
         std::fs::create_dir_all(&dir).ok();
         dir
     } else {
@@ -135,9 +135,9 @@ pub fn start_llama() -> Result<Child, Box<dyn std::error::Error>> {
 
     // Write the port to file immediately (we use fixed port 8082)
     if let Some(data_dir) = dirs::data_dir() {
-        let phlox_dir = data_dir.join("phlox");
-        std::fs::create_dir_all(&phlox_dir).ok();
-        let port_file = phlox_dir.join("llm_port.txt");
+        let siyadascribe_dir = data_dir.join("siyadascribe");
+        std::fs::create_dir_all(&siyadascribe_dir).ok();
+        let port_file = siyadascribe_dir.join("llm_port.txt");
         std::fs::write(&port_file, "8082").ok();
         log::info!("LLM port file written to: {:?}", port_file);
     }
@@ -148,8 +148,8 @@ pub fn start_llama() -> Result<Child, Box<dyn std::error::Error>> {
 pub fn find_whisper_model(models_dir: &std::path::Path) -> Option<std::path::PathBuf> {
     // First try reading from whisper_model.txt if it exists
     if let Some(data_dir) = dirs::data_dir() {
-        let phlox_dir = data_dir.join("phlox");
-        let model_file = phlox_dir.join("whisper_model.txt");
+        let siyadascribe_dir = data_dir.join("siyadascribe");
+        let model_file = siyadascribe_dir.join("whisper_model.txt");
         if let Ok(model_id) = std::fs::read_to_string(&model_file) {
             let model_id = model_id.trim();
             let model_path = models_dir.join(format!("ggml-{}.bin", model_id));
@@ -205,7 +205,7 @@ pub fn start_whisper() -> Result<Child, Box<dyn std::error::Error>> {
 
     // Set up models directory in app data
     let models_dir = if let Some(data_dir) = dirs::data_dir() {
-        let dir = data_dir.join("phlox").join("whisper_models");
+        let dir = data_dir.join("siyadascribe").join("whisper_models");
         std::fs::create_dir_all(&dir).ok();
         dir
     } else {
@@ -261,9 +261,9 @@ pub fn start_whisper() -> Result<Child, Box<dyn std::error::Error>> {
 
     // Write the port to file immediately (we use fixed port 8081)
     if let Some(data_dir) = dirs::data_dir() {
-        let phlox_dir = data_dir.join("phlox");
-        std::fs::create_dir_all(&phlox_dir).ok();
-        let port_file = phlox_dir.join("whisper_port.txt");
+        let siyadascribe_dir = data_dir.join("siyadascribe");
+        std::fs::create_dir_all(&siyadascribe_dir).ok();
+        let port_file = siyadascribe_dir.join("whisper_port.txt");
         std::fs::write(&port_file, "8081").ok();
         log::info!("Whisper port file written to: {:?}", port_file);
     }
@@ -373,7 +373,7 @@ pub fn wait_for_server() {
 
     for i in 0..60 {
         if let Some(data_dir) = dirs::data_dir() {
-            let port_file = data_dir.join("phlox").join("server_port.txt");
+            let port_file = data_dir.join("siyadascribe").join("server_port.txt");
             if port_file.exists() {
                 if let Ok(port) = std::fs::read_to_string(&port_file) {
                     log::info!("Server running on port: {}", port.trim());

@@ -1,4 +1,4 @@
-"""Database schema migrations for Phlox.
+"""Database schema migrations for SiyadaScribe.
 
 This module handles all database schema version migrations. Migrations are
 implemented as pure functions that accept cursor and db parameters to avoid
@@ -407,7 +407,7 @@ def migrate_to_v3(cursor, db):
         for template in default_templates:
             template_key_base = template["template_key"].split("_")[
                 0
-            ]  # e.g., "phlox" from "phlox_01"
+            ]  # e.g., "siyadascribe" from "siyadascribe_01"
             default_fields_by_template[template_key_base] = {
                 field["field_key"]: field for field in template["fields"]
             }
@@ -421,7 +421,7 @@ def migrate_to_v3(cursor, db):
             fields = json.loads(template["fields"])
             updated_fields = []
 
-            # Determine template type (phlox, soap, progress, or custom)
+            # Determine template type (siyadascribe, soap, progress, or custom)
             template_base = template_key.split("_")[0]
             is_default_template = template_base in default_fields_by_template
 

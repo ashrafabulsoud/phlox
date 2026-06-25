@@ -55,7 +55,7 @@ const PreviousVisitPanel = ({
   };
 
   // Look up the template for the previous visit
-  // First try exact match, then fall back to base template match (e.g., phlox_01 -> phlox_02)
+  // First try exact match, then fall back to base template match (e.g., siyadascribe_01 -> siyadascribe_02)
   const previousVisitTemplate = templates?.find(
     (t) => t.template_key === previousVisitTemplateKey
   ) || templates?.find(

@@ -1,4 +1,4 @@
-"""Database connection management for Phlox.
+"""Database connection management for SiyadaScribe.
 
 This module provides the core database connection functionality using
 SQLCipher for encrypted SQLite storage. The PatientDatabase class
@@ -62,7 +62,7 @@ def initialize_database(passphrase: str | None = None, db_dir=DATA_DIR) -> "Pati
 
 
 class PatientDatabase:
-    """Database connection manager for Phlox.
+    """Database connection manager for SiyadaScribe.
 
     This class manages an encrypted SQLite database connection using
     SQLCipher and handles migrations on initialization.
@@ -134,7 +134,7 @@ class PatientDatabase:
 
         # Set up database name and path first (needed for error handling)
         self.is_test = os.environ.get("TESTING", "False").lower() == "true"
-        self.db_name = "test_phlox_database.sqlite" if self.is_test else "phlox_database.sqlite"
+        self.db_name = "test_siyadascribe_database.sqlite" if self.is_test else "siyadascribe_database.sqlite"
         self.db_path = str(Path(self.db_dir) / self.db_name)
 
         # If passphrase not provided, try env/secret sources
@@ -165,7 +165,7 @@ class PatientDatabase:
                 )
                 raise ValueError(
                     "Database encryption key not configured. "
-                    "Please complete the encryption setup process in the Phlox app."
+                    "Please complete the encryption setup process in the SiyadaScribe app."
                 )
             else:
                 # Existing database without key - data loss scenario
@@ -175,7 +175,7 @@ class PatientDatabase:
                 )
                 raise ValueError(
                     "Cannot decrypt existing database. "
-                    "Please provide the correct encryption passphrase in the Phlox app. "
+                    "Please provide the correct encryption passphrase in the SiyadaScribe app. "
                     "If you have forgotten your passphrase, your data cannot be recovered."
                 )
         self.ensure_data_directory()
@@ -184,7 +184,7 @@ class PatientDatabase:
         self.connect_to_database()
         run_migrations(self)  # Run migrations first to create tables
         self.ensure_default_templates()  # Then ensure default templates
-        set_initial_default_template(self.cursor, self.db)  # Set phlox as default template
+        set_initial_default_template(self.cursor, self.db)  # Set siyadascribe as default template
 
     def test_database(self):
         """Test database functionality with sample data.

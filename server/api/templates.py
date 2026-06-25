@@ -62,7 +62,7 @@ async def get_template(template_key: str):
 async def delete_template(template_key: str):
     """Delete a template if it's not a default template."""
     try:
-        if template_key.startswith(("phlox_", "soap_", "progress_")):
+        if template_key.startswith(("siyadascribe_", "soap_", "progress_")):
             raise HTTPException(status_code=403, detail="Cannot delete default templates")
 
         success = soft_delete_template(template_key)

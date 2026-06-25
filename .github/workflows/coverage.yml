@@ -20,11 +20,11 @@ jobs:
 
             - name: Build Test Docker Image
               run: |
-                  docker build -f Dockerfile.test -t phlox-test .
+                  docker build -f Dockerfile.test -t siyadascribe-test .
 
             - name: Run Tests in Docker Container
               run: |
-                  docker run --name test-container phlox-test
+                  docker run --name test-container siyadascribe-test
                   docker cp test-container:/usr/src/app/coverage.xml ./coverage.xml
                   docker cp test-container:/usr/src/app/coverage.lcov ./coverage.lcov
 

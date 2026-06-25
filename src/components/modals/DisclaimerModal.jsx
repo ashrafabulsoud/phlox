@@ -42,7 +42,7 @@ const DisclaimerModal = ({ isOpen, onClose }) => {
             <ModalContent className="modal-style">
                 <ModalHeader>
                     <HStack>
-                        <Image src="/logo.webp" alt="Phlox Logo" width="30px" />
+                        <Image src="/logo.webp" alt="SiyadaScribe Logo" width="30px" />
                         <Text>Important Notice</Text>
                     </HStack>
                 </ModalHeader>
@@ -82,7 +82,7 @@ const DisclaimerModal = ({ isOpen, onClose }) => {
                                 fontWeight="600"
                                 mb={2}
                             >
-                                Phlox is an experimental project intended for
+                                SiyadaScribe is an experimental project intended for
                                 educational and personal experimentation ONLY.
                             </Text>
                             <Text
@@ -132,7 +132,7 @@ const DisclaimerModal = ({ isOpen, onClose }) => {
                                 >
                                     <strong>No User Authentication:</strong>{" "}
                                     Naively exposing this application to the
-                                    open internet is highly discouraged. Phlox
+                                    open internet is highly discouraged. SiyadaScribe
                                     has no user access controls and minimal
                                     input sanitisation.
                                 </Text>
@@ -141,7 +141,7 @@ const DisclaimerModal = ({ isOpen, onClose }) => {
                                     fontSize="sm"
                                 >
                                     <strong>Not HIPAA/GDPR Compliant:</strong>{" "}
-                                    Phlox lacks the necessary security and
+                                    SiyadaScribe lacks the necessary security and
                                     compliance measures for handling protected
                                     health information in regulated
                                     environments.

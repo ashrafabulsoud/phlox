@@ -55,13 +55,13 @@ cmake --build . --target whisper-server -j$(sysctl -n hw.ncpu)
 
 echo "Fixing rpath in whisper-server..."
 if [ -f "bin/whisper-server" ]; then
-    cp bin/whisper-server "$SCRIPT_DIR/phlox-whisper-server"
-    chmod +x "$SCRIPT_DIR/phlox-whisper-server"
-    install_name_tool -delete_rpath "$WHISPER_DIR/build/src" "$SCRIPT_DIR/phlox-whisper-server" 2>/dev/null || true
-    install_name_tool -delete_rpath "$WHISPER_DIR/build/ggml" "$SCRIPT_DIR/phlox-whisper-server" 2>/dev/null || true
-    echo "phlox-whisper-server binary built successfully at: $SCRIPT_DIR/phlox-whisper-server"
+    cp bin/whisper-server "$SCRIPT_DIR/siyadascribe-whisper-server"
+    chmod +x "$SCRIPT_DIR/siyadascribe-whisper-server"
+    install_name_tool -delete_rpath "$WHISPER_DIR/build/src" "$SCRIPT_DIR/siyadascribe-whisper-server" 2>/dev/null || true
+    install_name_tool -delete_rpath "$WHISPER_DIR/build/ggml" "$SCRIPT_DIR/siyadascribe-whisper-server" 2>/dev/null || true
+    echo "siyadascribe-whisper-server binary built successfully at: $SCRIPT_DIR/siyadascribe-whisper-server"
     echo "Checking for remaining rpath entries:"
-    otool -L "$SCRIPT_DIR/phlox-whisper-server" | grep "@rpath" || echo "✓ No problematic rpath entries"
+    otool -L "$SCRIPT_DIR/siyadascribe-whisper-server" | grep "@rpath" || echo "✓ No problematic rpath entries"
 else
     echo "Error: whisper-server binary not found after build"
     echo "Looking in: $(pwd)/bin"
@@ -77,11 +77,11 @@ if [[ "$OSTYPE" == "darwin"* ]] && [ "$DEBUG_MODE" != true ]; then
     SIGNING_IDENTITY="${APPLE_SIGNING_IDENTITY:-${SIGNING_IDENTITY:-$(security find-identity -v -p codesigning 2>/dev/null | grep "Developer ID Application" | head -1 | sed 's/.*"\(.*\)".*/\1/')}}"
 
     if [ -n "$SIGNING_IDENTITY" ]; then
-        echo "Signing phlox-whisper-server with: $SIGNING_IDENTITY"
+        echo "Signing siyadascribe-whisper-server with: $SIGNING_IDENTITY"
         codesign --force --options runtime --timestamp \
             --sign "$SIGNING_IDENTITY" \
-            "$SCRIPT_DIR/phlox-whisper-server"
-        echo "✅ phlox-whisper-server signed"
+            "$SCRIPT_DIR/siyadascribe-whisper-server"
+        echo "✅ siyadascribe-whisper-server signed"
     fi
 fi
 
@@ -89,7 +89,7 @@ fi
 if [ "$DEBUG_MODE" = true ]; then
     echo "Copying to target/debug for development..."
     mkdir -p "$SCRIPT_DIR/target/debug"
-    cp "$SCRIPT_DIR/phlox-whisper-server" "$SCRIPT_DIR/target/debug/phlox-whisper-server"
-    chmod +x "$SCRIPT_DIR/target/debug/phlox-whisper-server"
-    echo "✅ Copied to target/debug/phlox-whisper-server"
+    cp "$SCRIPT_DIR/siyadascribe-whisper-server" "$SCRIPT_DIR/target/debug/siyadascribe-whisper-server"
+    chmod +x "$SCRIPT_DIR/target/debug/siyadascribe-whisper-server"
+    echo "✅ Copied to target/debug/siyadascribe-whisper-server"
 fi

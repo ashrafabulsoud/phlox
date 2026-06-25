@@ -1,6 +1,6 @@
 # Medical Transcription
 
-Phlox converts audio recordings into structured clinical notes.
+SiyadaScribe converts audio recordings into structured clinical notes.
 
 ## Usage
 
@@ -27,7 +27,7 @@ Phlox converts audio recordings into structured clinical notes.
 
 ## Document Processing
 
-Phlox supports uploading PDFs, images, and text documents for note generation. The processing pipeline is configurable in Settings → Model Settings → LLM tab:
+SiyadaScribe supports uploading PDFs, images, and text documents for note generation. The processing pipeline is configurable in Settings → Model Settings → LLM tab:
 
 - **Auto (default):** Automatically probes the model for vision capability. If supported, sends document images directly to the vision model. Falls back to text extraction + OCR if not.
 - **Vision only:** Always renders document pages as images and sends them to the vision model. Requires a vision-capable model.

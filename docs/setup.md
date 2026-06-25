@@ -1,14 +1,14 @@
 # Setup and Installation
 
-This guide will walk you through setting up and installing Phlox.
+This guide will walk you through setting up and installing SiyadaScribe.
 
 ## Prerequisites
 
 Before you begin, ensure you have the following prerequisites installed and configured:
 
-1.  **Podman or Docker:**  Phlox uses containerization for easy deployment. Install either [Podman](https://podman.io/) or [Docker](https://www.docker.com/). I like Podman because it is rootless and daemonless.
+1.  **Podman or Docker:**  SiyadaScribe uses containerization for easy deployment. Install either [Podman](https://podman.io/) or [Docker](https://www.docker.com/). I like Podman because it is rootless and daemonless.
 
-2.  **LLM Endpoint:** Phlox supports multiple types of LLM providers. The model you choose must support tool calling:
+2.  **LLM Endpoint:** SiyadaScribe supports multiple types of LLM providers. The model you choose must support tool calling:
 
     - **Ollama (Easiest):** [Install Ollama](https://ollama.com/) locally for self-hosted models
       - A few models that work well:
@@ -26,7 +26,7 @@ Before you begin, ensure you have the following prerequisites installed and conf
     >
     > **Advanced Reasoning:** The [Qwen3-30B-A3B](https://huggingface.co/Qwen/Qwen3-30B-A3B) MoE model provides llama3.3-70b level performance with lower resource requirements and much better token generation speed. This is what I use day-to-day.
 
-3.  **Whisper-compatible Transcription Service:** Phlox needs a service to transcribe audio into text. I recommend self-hosted solutions:
+3.  **Whisper-compatible Transcription Service:** SiyadaScribe needs a service to transcribe audio into text. I recommend self-hosted solutions:
     - **High-Performance Options:**
 
       - **[Parakeet Diarized](https://github.com/jfgonsalves/parakeet-diarized):** A solution I use that leverages NVIDIA Parakeet-TDT 0.6B V2 (Top ASR model on HF leaderboard) + Pyannote diarization. Diarization improves model comprehension for downstream tasks but has relatively steep VRAM requirements. [See Parakeet-Diarized Setup instructions](#parakeet-diarized-setup).
@@ -41,7 +41,7 @@ Before you begin, ensure you have the following prerequisites installed and conf
 
     - **Quantization:** Using Q4 quantization can significantly reduce memory usage and improve token generation speed without significant degrading output quality.
 
-          - **KV Cache Quantization:** This is an advanced configuration option that can further reduce memory usage. Aggressive KV cache quantization (smaller than Q8) is not recommended for heavily context-dependent tasks like those in Phlox.
+          - **KV Cache Quantization:** This is an advanced configuration option that can further reduce memory usage. Aggressive KV cache quantization (smaller than Q8) is not recommended for heavily context-dependent tasks like those in SiyadaScribe.
 
     - **RAM Recommendations (assuming Q4 quants):**
       - 8GB minimum for smaller models
@@ -55,13 +55,13 @@ Follow these steps for a quick installation:
 
 1.  **Clone the Repository:**
     ```bash
-    git clone https://github.com/bloodworks-io/phlox.git
-    cd phlox
+    git clone https://github.com/ashrafabulsoud/phlox.git
+    cd siyadascribe
     ```
 
 2.  **Build the Docker Image:**
     ```bash
-    docker build -t phlox:latest .
+    docker build -t siyadascribe:latest .
     ```
 
 3.  **Create `.env` File:**
@@ -82,7 +82,7 @@ Follow these steps for a quick installation:
     LLM_EXTRA_BODY={"chat_template_kwargs": {"thinking": true}}  # Extra params for LLM requests (JSON string)
     ```
 
-4.  **Run Phlox:**
+4.  **Run SiyadaScribe:**
 
     - **Production Deployment:** Use the `docker-compose.yml` file:
         ```bash
@@ -93,11 +93,11 @@ Follow these steps for a quick installation:
         docker-compose -f docker-compose.dev.yml up
         ```
 
-5.  **Access Phlox in your Browser:**
+5.  **Access SiyadaScribe in your Browser:**
     Open your web browser and navigate to [http://localhost:3000](http://localhost:5000).
 
 6.  **Initial Configuration:**
-    Once Phlox is running, access the **Settings** page within the application:
+    Once SiyadaScribe is running, access the **Settings** page within the application:
     - **Provider:** Select "Ollama" or "OpenAI-Compatible" and update the endpoint URL.
     - **Transcription Endpoint:** Depending on your endpoint configuration, you may need to specify a model and an API-key.
     - **Model Selection:**  Model selection options will depend on the models reported as available by your chosen endpoint.
@@ -120,7 +120,7 @@ pip install -r requirements.txt
 ```
 
 ### Configuration Tips
-- Enable diarization in Phlox settings for speaker-aware transcripts
+- Enable diarization in SiyadaScribe settings for speaker-aware transcripts
 - Use shorter audio segments (<5 minutes) for best diarization accuracy
 - For multi-speaker clinics, diarization significantly improves note quality
 
@@ -132,13 +132,13 @@ pip install -r requirements.txt
 
 ## Critical Security Warning
 
-⚠️ **By default, Phlox binds to 0.0.0.0 (all network interfaces) for development convenience.**
+⚠️ **By default, SiyadaScribe binds to 0.0.0.0 (all network interfaces) for development convenience.**
 
 **If exposed to the internet without protection:**
    - Anyone can access your instance
    - All data could be stolen
 
-**Never expose Phlox to the open internet without some form of reverse proxy (Nginx/Caddy) or VPN.**
+**Never expose SiyadaScribe to the open internet without some form of reverse proxy (Nginx/Caddy) or VPN.**
 
 For production deployments behind a reverse proxy, enable proxy authentication:
 ```env
@@ -148,4 +148,4 @@ PROXY_AUTH_ALLOWED_USERS=your_username
 RATE_LIMIT_ENABLED=true
 ```
 
-If you encounter problems, please create an issue on the [GitHub repository](https://github.com/bloodworks-io/phlox/issues).
+If you encounter problems, please create an issue on the [GitHub repository](https://github.com/ashrafabulsoud/phlox/issues).

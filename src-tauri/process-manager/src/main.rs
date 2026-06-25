@@ -10,7 +10,7 @@ use std::time::Duration;
 
 /// Get the grace period from environment variable or default to 5 seconds
 fn grace_period_seconds() -> u64 {
-    env::var("PHLOX_PM_GRACE_SECONDS")
+    env::var("SIYADASCRIBE_PM_GRACE_SECONDS")
         .ok()
         .and_then(|s| s.parse().ok())
         .unwrap_or(5)
@@ -113,7 +113,7 @@ fn main() {
     // Initialize logger
     env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("info")).init();
 
-    info!("Phlox Process Manager starting");
+    info!("SiyadaScribe Process Manager starting");
 
     // Get the grace period
     let grace_secs = grace_period_seconds();

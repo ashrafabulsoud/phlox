@@ -40,7 +40,7 @@ export const STEP_DESCRIPTIONS = {
 };
 
 export const TEMPLATE_DESCRIPTIONS = {
-  phlox_01:
+  siyadascribe_01:
     "Designed for physician consultations with sections for primary condition, other problems, investigations, current history, impression, and plan.",
   soap_01:
     "Standard SOAP format with Subjective, Objective, Assessment, and Plan sections - ideal for general consultations.",

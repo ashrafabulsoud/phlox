@@ -1,23 +1,23 @@
 > [!WARNING]
-> Phlox is an experimental project. For full details on limitations and risks, please read the **[Usage Warning](#usage-warning-️)** section carefully before proceeding.
+> SiyadaScribe is an experimental project. For full details on limitations and risks, please read the **[Usage Warning](#usage-warning-️)** section carefully before proceeding.
 
 <p align="center">
-  <img src="/docs/images/readme_logo.png" width="300" alt="Phlox Logo">
+  <img src="/docs/images/readme_logo.png" width="300" alt="SiyadaScribe Logo">
 </p>
 
 <div align="center">
 
-[![Tests](https://github.com/bloodworks-io/phlox/actions/workflows/coverage.yml/badge.svg)](https://github.com/bloodworks-io/phlox/actions/workflows/coverage.yml)
-[![Known Vulnerabilities](https://snyk.io/test/github/bloodworks-io/phlox/badge.svg)](https://snyk.io/test/github/bloodworks-io/phlox/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/bloodworks-io/phlox/badge.svg?branch=main)](https://coveralls.io/github/bloodworks-io/phlox?branch=main)
-[![CodeQL](https://github.com/bloodworks-io/phlox/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/bloodworks-io/phlox/actions/workflows/github-code-scanning/codeql)
+[![Tests](https://github.com/ashrafabulsoud/phlox/actions/workflows/coverage.yml/badge.svg)](https://github.com/ashrafabulsoud/phlox/actions/workflows/coverage.yml)
+[![Known Vulnerabilities](https://snyk.io/test/github/ashrafabulsoud/phlox/badge.svg)](https://snyk.io/test/github/ashrafabulsoud/phlox/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/ashrafabulsoud/phlox/badge.svg?branch=main)](https://coveralls.io/github/ashrafabulsoud/phlox?branch=main)
+[![CodeQL](https://github.com/ashrafabulsoud/phlox/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/ashrafabulsoud/phlox/actions/workflows/github-code-scanning/codeql)
 [![Code style: ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/bloodworks-io/phlox/issues)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/ashrafabulsoud/phlox/issues)
 
 </div>
 
-Phlox is an open-source patient management system integrating AI-powered medical transcription, clinical note generation, an AI chatbot interface, and agentic tool-calling capabilities. It's designed to run locally, utilizing local models for inference and transcription.
+SiyadaScribe is an open-source patient management system integrating AI-powered medical transcription, clinical note generation, an AI chatbot interface, and agentic tool-calling capabilities. It's designed to run locally, utilizing local models for inference and transcription.
 
 ## Key Features ✨
 
@@ -28,14 +28,14 @@ Phlox is an open-source patient management system integrating AI-powered medical
 - **✅ Task Manager:**  Parse clinical plans into actionable task lists with AI-generated summaries.
 - **✉️  Correspondence Generation:**  One-click generation of patient letters based on clinical notes, with support for both ambient listening and dictate mode.
 - **🤖 AI-chat/RAG:** Reference tool to query medical guidelines, literature, and documentation backed by a local knowledge base (ChromaDB).
-- **💡 Adaptive Refinement:** Outputs improve the more you use it; Phlox learns from your previous notes.
+- **💡 Adaptive Refinement:** Outputs improve the more you use it; SiyadaScribe learns from your previous notes.
 - **🛠️ Agentic Tool-Calling System:** Built-in tools including PubMed search, Wikipedia lookup, patient note search, transcript search, outstanding job management, and note creation — with interleaved thinking for complex multi-step queries.
 - **🔌 MCP Server Support:** Connect external tool servers via the Model Context Protocol (SSE transport). Tools are dynamically loaded and can be toggled per-server, with optional sensitive data filtering to prevent PHI from being sent to external servers.
 - **📄 Vision-Enhanced Document Processing:** Hybrid PDF processing — uses vision models directly when available, falling back to OCR. Supports image uploads for clinical document analysis.
 - **📋 Agent Dashboard:** Central hub with chat-driven clinic management, built-in todo panel, outstanding jobs view, and clinic summary by date.
 
 <p align="center">
-  <img src="/docs/images/readme_screenshot.png" width="500" alt="Phlox Screenshot">
+  <img src="/docs/images/readme_screenshot.png" width="500" alt="SiyadaScribe Screenshot">
 </p>
 
 ## Stack 🛠️
@@ -52,25 +52,25 @@ Phlox is an open-source patient management system integrating AI-powered medical
 
 ### Desktop App (Apple Silicon)
 
-Pre-built Apple Silicon binaries are available from [GitHub Releases](https://github.com/bloodworks-io/phlox/releases).
+Pre-built Apple Silicon binaries are available from [GitHub Releases](https://github.com/ashrafabulsoud/phlox/releases).
 
 **Note:** The desktop app provides transcription and correspondence features only. For extended reference tools (Chat, RAG, PDF Upload), use the Docker/Podman deployment below.
 
 ### Docker/Podman (Extended Reference Tools)
 
-Pre-built images are available from [GitHub Container Registry](https://github.com/bloodworks-io/phlox/pkgs/container/phlox):
+Pre-built images are available from [GitHub Container Registry](https://github.com/ashrafabulsoud/phlox/pkgs/container/siyadascribe):
 
 ```bash
-docker pull ghcr.io/bloodworks-io/phlox:latest
+docker pull ghcr.io/ashrafabulsoud/phlox:latest
 ```
 
 Or build from source:
 
 1. **Prerequisites:** Podman/Docker, Ollama/OpenAI-compatible endpoint, Whisper endpoint.
 2. **Hardware Requirements:** For reasonable performance, a GPU (CUDA, ROCm) or Apple M-Series chip is strongly recommended. Without these, especially with larger models, the system will run extremely slowly.
-3. **Clone:** `git clone https://github.com/bloodworks-io/phlox.git && cd phlox`
-4. **Build:** `docker build -t phlox:latest .`
-5. **Environment:** Create `.env` in `phlox/` (see example in documentation).
+3. **Clone:** `git clone https://github.com/ashrafabulsoud/phlox.git && cd siyadascribe`
+4. **Build:** `docker build -t siyadascribe:latest .`
+5. **Environment:** Create `.env` in `siyadascribe/` (see example in documentation).
 6. **Run:** `docker-compose up` (Production) or `docker-compose -f docker-compose.dev.yml up` (Development).
 7. **Access:** http://localhost:5000
 
@@ -79,7 +79,7 @@ Or build from source:
 ## Deployment Options
 
 ### Docker/Podman (Extended Reference Tools)
-The complete Phlox experience with all features:
+The complete SiyadaScribe experience with all features:
 - Medical transcription and clinical notes
 - Correspondence generation
 - AI Chat interface
@@ -97,7 +97,7 @@ Native desktop application for Apple Silicon:
 
 ## Roadmap 🗺️
 
-Here's what's coming next for Phlox:
+Here's what's coming next for SiyadaScribe:
 
 - [x] Use structured JSON outputs for managing LLM responses
 - [x] Add support for OpenAI-compatible endpoints
@@ -108,9 +108,9 @@ Here's what's coming next for Phlox:
 
 ## Usage Warning ⚠️
 
-Phlox is an experimental project intended for educational and personal use. **It is not a certified medical device and should NOT be used for clinical decision-making.**
+SiyadaScribe is an experimental project intended for educational and personal use. **It is not a certified medical device and should NOT be used for clinical decision-making.**
 
-Phlox is **not** suitable for production deployment in the form provided in this repo. If you intend to use it in a clinical setting, you are responsible for ensuring compliance with local applicable regulations (HIPAA, GDPR, TGA, etc.)
+SiyadaScribe is **not** suitable for production deployment in the form provided in this repo. If you intend to use it in a clinical setting, you are responsible for ensuring compliance with local applicable regulations (HIPAA, GDPR, TGA, etc.)
 
 AI outputs can be unreliable. Always verify AI-generated content and use professional clinical judgment. The application displays a disclaimer on startup with full details.
 

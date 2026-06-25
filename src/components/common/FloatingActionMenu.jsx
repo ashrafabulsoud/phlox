@@ -102,7 +102,7 @@ const FloatingActionMenu = ({
 
       {/* Chat button */}
       {isChatEnabled() && (
-        <Tooltip label="Chat with Phlox" placement="left">
+        <Tooltip label="Chat with SiyadaScribe" placement="left">
           <IconButton
             id="fab-chat"
             icon={<ChatIcon />}

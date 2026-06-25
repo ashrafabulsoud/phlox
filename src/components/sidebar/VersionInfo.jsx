@@ -104,7 +104,7 @@ const VersionInfo = ({ isCollapsed, colorMode, toggleColorMode }) => {
 
                     <Tooltip label="GitHub Repository" placement="right">
                         <Link
-                            href="https://github.com/bloodworks-io/phlox"
+                            href="https://github.com/ashrafabulsoud/phlox"
                             target="_blank"
                             rel="noopener noreferrer"
                             fontSize="md"
@@ -170,7 +170,7 @@ const VersionInfo = ({ isCollapsed, colorMode, toggleColorMode }) => {
 
                     <Tooltip label="GitHub Repository">
                         <Link
-                            href="https://github.com/bloodworks-io/phlox"
+                            href="https://github.com/ashrafabulsoud/phlox"
                             target="_blank"
                             rel="noopener noreferrer"
                             fontSize="lg"

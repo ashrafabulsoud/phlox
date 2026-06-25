@@ -377,7 +377,7 @@ def get_patient_history(ur_number: str, template_key: str | None = None) -> list
 
     Args:
         ur_number (str): The patient's UR number.
-        template_key (str, optional): Filter by template type (e.g., "soap", "phlox").
+        template_key (str, optional): Filter by template type (e.g., "soap", "siyadascribe").
             Uses prefix matching to handle template versions like "soap_01", "soap_02".
 
     Returns:

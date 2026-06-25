@@ -78,7 +78,7 @@ export const templateService = {
   },
 
   isDefaultTemplate: (templateKey) => {
-    const DEFAULT_TEMPLATE_KEYS = ["phlox_", "soap_", "progress_"];
+    const DEFAULT_TEMPLATE_KEYS = ["siyadascribe_", "soap_", "progress_"];
     return DEFAULT_TEMPLATE_KEYS.some((prefix) =>
       templateKey.startsWith(prefix),
     );

@@ -5,13 +5,13 @@
     "devUrl": "http://localhost:3000",
     "frontendDist": "../build"
   },
-  "productName": "Phlox",
+  "productName": "SiyadaScribe",
   "version": "1.0.5",
-  "identifier": "com.phlox.app",
+  "identifier": "com.siyadascribe.app",
   "app": {
     "windows": [
       {
-        "title": "Phlox",
+        "title": "SiyadaScribe",
         "width": 1200,
         "height": 800,
         "resizable": true,
@@ -61,10 +61,10 @@
     "longDescription": "",
     "copyright": "",
     "externalBin": [
-      "binaries/phlox-server",
-      "binaries/phlox-pm",
-      "binaries/phlox-llama-server",
-      "binaries/phlox-whisper-server"
+      "binaries/siyadascribe-server",
+      "binaries/siyadascribe-pm",
+      "binaries/siyadascribe-llama-server",
+      "binaries/siyadascribe-whisper-server"
     ]
   },
   "plugins": {

@@ -18,22 +18,22 @@ def test_set_default_template(monkeypatch):
         return
 
     monkeypatch.setattr("server.api.templates.set_default_template", fake_set_default_template)
-    response = client.post("/api/templates/default/phlox_01")
+    response = client.post("/api/templates/default/siyadascribe_01")
     assert response.status_code == 200
     data = response.json()
-    assert "Set phlox_01" in data.get("message", "")
+    assert "Set siyadascribe_01" in data.get("message", "")
 
 
 def test_get_default_template(monkeypatch):
     # Patch get_default_template to return a dummy value
     def fake_get_default_template():
-        return {"template_key": "phlox_01"}
+        return {"template_key": "siyadascribe_01"}
 
     monkeypatch.setattr("server.api.templates.get_default_template", fake_get_default_template)
     response = client.get("/api/templates/default")
     assert response.status_code == 200
     data = response.json()
-    assert data.get("template_key") == "phlox_01"
+    assert data.get("template_key") == "siyadascribe_01"
 
 
 def test_get_template(monkeypatch):
@@ -42,10 +42,10 @@ def test_get_template(monkeypatch):
         return {"template_key": template_key, "template_name": "Test Template", "fields": []}
 
     monkeypatch.setattr("server.api.templates.get_template_by_key", fake_get_template)
-    response = client.get("/api/templates/phlox_01")
+    response = client.get("/api/templates/siyadascribe_01")
     assert response.status_code == 200
     data = response.json()
-    assert data.get("template_key") == "phlox_01"
+    assert data.get("template_key") == "siyadascribe_01"
 
 
 def test_get_templates():

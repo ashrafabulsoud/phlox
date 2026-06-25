@@ -17,7 +17,7 @@ PROXY_AUTH_ALLOWED_USERS = [
     u.strip() for u in os.getenv("PROXY_AUTH_ALLOWED_USERS", "").split(",") if u.strip()
 ]
 
-APP_NAME = "Phlox"
+APP_NAME = "SiyadaScribe"
 APP_AUTHOR = "bloodworks.io"
 
 
@@ -54,7 +54,7 @@ def get_temp_directory():
         temp_dir = Path("/usr/src/app/temp")
     else:
         # Use system temp directory with app-specific subdirectory
-        temp_dir = Path(tempfile.gettempdir()) / "phlox"
+        temp_dir = Path(tempfile.gettempdir()) / "siyadascribe"
     temp_dir.mkdir(parents=True, exist_ok=True)
     return temp_dir
 

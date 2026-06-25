@@ -221,7 +221,7 @@ const EncryptionSetup = ({ onComplete }) => {
             align="center"
             mb={4}
           >
-            <Image src="/logo.webp" alt="Phlox Logo" width="60px" mb={3} />
+            <Image src="/logo.webp" alt="SiyadaScribe Logo" width="60px" mb={3} />
             <MotionHeading
               as="h1"
               textAlign="center"
@@ -235,7 +235,7 @@ const EncryptionSetup = ({ onComplete }) => {
                 letterSpacing: "-0.02em",
               }}
             >
-              Welcome to Phlox
+              Welcome to SiyadaScribe
             </MotionHeading>
             <MotionText
               textAlign="center"

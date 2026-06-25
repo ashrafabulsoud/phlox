@@ -95,7 +95,7 @@ const TemplateSettingsPanel = ({
 
   const DefaultTemplates = {
     // List of default template keys
-    DEFAULT_TEMPLATE_KEYS: ["phlox_", "soap_", "progress_"],
+    DEFAULT_TEMPLATE_KEYS: ["siyadascribe_", "soap_", "progress_"],
 
     // Check if a template is a default one
     isDefaultTemplate: (templateKey) => {

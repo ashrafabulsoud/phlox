@@ -255,8 +255,8 @@ pub fn convert_audio_to_wav(audio_bytes: Vec<u8>) -> Result<Vec<u8>, String> {
 
         // Create a temporary directory for audio conversion
         let temp_dir = std::env::temp_dir();
-        let phlox_temp = temp_dir.join("phlox_audio");
-        std::fs::create_dir_all(&phlox_temp)
+        let siyadascribe_temp = temp_dir.join("siyadascribe_audio");
+        std::fs::create_dir_all(&siyadascribe_temp)
             .map_err(|e| format!("Failed to create temp directory: {}", e))?;
 
         // Generate unique filenames using timestamp
@@ -264,8 +264,8 @@ pub fn convert_audio_to_wav(audio_bytes: Vec<u8>) -> Result<Vec<u8>, String> {
             .duration_since(std::time::UNIX_EPOCH)
             .map_err(|e| format!("Failed to get timestamp: {}", e))?
             .as_micros();
-        let input_path = phlox_temp.join(format!("input_{}.audio", timestamp));
-        let output_path = phlox_temp.join(format!("output_{}.wav", timestamp));
+        let input_path = siyadascribe_temp.join(format!("input_{}.audio", timestamp));
+        let output_path = siyadascribe_temp.join(format!("output_{}.wav", timestamp));
 
         // Write input audio bytes to temp file
         let mut input_file = std::fs::File::create(&input_path)
@@ -431,7 +431,7 @@ pub fn get_encryption_status() -> serde_json::Value {
     })
 }
 
-/// Start the Phlox server via process manager (warm start - no passphrase yet)
+/// Start the SiyadaScribe server via process manager (warm start - no passphrase yet)
 #[tauri::command]
 pub async fn start_server_command(_app_handle: tauri::AppHandle) -> Result<String, String> {
     log::info!("start_server_command called - warming up server");

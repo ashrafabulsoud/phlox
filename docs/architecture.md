@@ -1,6 +1,6 @@
 # Architecture Overview
 <p align="center">
-<img src="images/architecture.png" width="500px" alt="Phlox Architecture"/>
+<img src="images/architecture.png" width="500px" alt="SiyadaScribe Architecture"/>
 </p>
 
 ## Components

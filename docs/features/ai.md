@@ -1,6 +1,6 @@
 # AI Features
 
-Phlox includes several AI-powered features for chatting with documents, clinical notes, and medical literature.
+SiyadaScribe includes several AI-powered features for chatting with documents, clinical notes, and medical literature.
 
 ## Document Chat
 Chat with uploaded medical documents and guidelines:
@@ -84,6 +84,6 @@ Generate a simulated peer-review and literature correlation for the current enco
 
 ## Adaptive Refinement
 
-Phlox learns your documentation preferences over time to improve note quality:
+SiyadaScribe learns your documentation preferences over time to improve note quality:
 
 1. Edit generated content in any template field

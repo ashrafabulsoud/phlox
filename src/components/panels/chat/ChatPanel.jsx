@@ -142,7 +142,7 @@ const ChatPanel = ({
                 />
 
                 <Text textAlign="center" fontSize="xs" color="gray.500">
-                    Phlox may make mistakes. Always verify critical information.
+                    SiyadaScribe may make mistakes. Always verify critical information.
                 </Text>
             </Box>
 

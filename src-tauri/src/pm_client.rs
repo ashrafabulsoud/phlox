@@ -8,8 +8,8 @@ use std::time::Duration;
 pub fn socket_path() -> PathBuf {
     dirs::data_dir()
         .expect("Failed to get data directory")
-        .join("phlox")
-        .join("phlox_pm.sock")
+        .join("siyadascribe")
+        .join("siyadascribe_pm.sock")
 }
 
 /// Request types sent to process manager
