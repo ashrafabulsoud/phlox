@@ -120,6 +120,8 @@ AI outputs can be unreliable. Always verify AI-generated content and use profess
 
 [MIT License](LICENSE)
 
+SiyadaScribe is a rebranded distribution of an upstream MIT-licensed open-source project. The original copyright notice is retained in [LICENSE](LICENSE).
+
 ## Contributing 🤝
 
 [Contributing Guidelines](.github/CONTRIBUTING.md)
