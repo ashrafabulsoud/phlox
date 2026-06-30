@@ -68,7 +68,7 @@ async def transcribe(
         if name:
             name_parts = name.split(",")
             last_name = name_parts[0].strip()
-            first_name = name_parts[1].strip()
+            first_name = name_parts[1].strip() if len(name_parts) > 1 else ""
             formatted_name = f"{first_name} {last_name}"
 
         # Perform transcription
@@ -157,7 +157,7 @@ async def reprocess_transcription(
         if name:
             name_parts = name.split(",")
             last_name = name_parts[0].strip()
-            first_name = name_parts[1].strip()
+            first_name = name_parts[1].strip() if len(name_parts) > 1 else ""
             formatted_name = f"{first_name} {last_name}"
 
         # Get template fields if template key is provided
@@ -222,7 +222,7 @@ async def process_document(
         if name:
             name_parts = name.split(",")
             last_name = name_parts[0].strip()
-            first_name = name_parts[1].strip()
+            first_name = name_parts[1].strip() if len(name_parts) > 1 else ""
             formatted_name = f"{first_name} {last_name}"
 
         # Get template fields if template key is provided
