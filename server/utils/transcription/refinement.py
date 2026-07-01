@@ -10,6 +10,7 @@ from server.schemas.grammars import (
     RefinedResponse,
 )
 from server.schemas.templates import TemplateField
+from server.utils.language import language_directive
 from server.utils.llm_client import repair_json
 from server.utils.llm_client.client import get_llm_client
 
@@ -184,6 +185,8 @@ def build_system_prompt(
         for _i, instruction in enumerate(field.adaptive_refinement_instructions):
             instructions_string += f"\n- {instruction}"
         system_prompt += instructions_string
+
+    system_prompt += language_directive(config_manager.get_user_settings().get("output_language"))
 
     return system_prompt
 

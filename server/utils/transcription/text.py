@@ -8,6 +8,7 @@ from typing import Any
 from server.database.config.manager import config_manager
 from server.schemas.grammars import MultiFieldResponse
 from server.schemas.templates import TemplateField, TemplateResponse
+from server.utils.language import language_directive
 from server.utils.llm_client.client import get_llm_client
 from server.utils.transcription.refinement import refine_field_content
 
@@ -147,6 +148,10 @@ FIELDS:
 {chr(10).join(field_instructions)}
 
 Output MUST be ONLY valid JSON with top-level key "field_summaries" (object mapping field_key to array of strings)."""
+
+            system_content += language_directive(
+                config_manager.get_user_settings().get("output_language")
+            )
 
             request_body = [
                 {"role": "system", "content": system_content},

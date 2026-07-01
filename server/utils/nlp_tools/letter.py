@@ -5,6 +5,7 @@ from fastapi import HTTPException
 from server.database.config.manager import config_manager
 from server.schemas.grammars import LetterDraft
 from server.utils.helpers import calculate_age
+from server.utils.language import language_directive
 from server.utils.llm_client import repair_json
 from server.utils.llm_client.client import get_llm_client
 
@@ -43,6 +44,8 @@ async def generate_letter_content(
             doctor_context += f"{doctor_name}, " if doctor_name else ""
             doctor_context += f"a {specialty} specialist." if specialty else "a specialist."
             system_content += doctor_context
+
+        system_content += language_directive(user_settings.get("output_language"))
 
         request_body = [
             {"role": "system", "content": system_content},

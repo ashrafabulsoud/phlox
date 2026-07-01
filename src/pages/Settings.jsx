@@ -27,6 +27,7 @@ const Settings = () => {
     const [userSettings, setUserSettings] = useState({
         name: "",
         specialty: "",
+        output_language: "auto",
         quick_chat_1_title: "Critique my plan",
         quick_chat_1_prompt: "Critique my plan",
         quick_chat_2_title: "Any additional investigations",

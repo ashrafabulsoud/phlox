@@ -8,6 +8,7 @@ from server.database.config.manager import config_manager
 from server.schemas.grammars import ClinicalReasoning
 from server.utils.chat.tools import execute_tool_non_streaming, get_tools_definition
 from server.utils.helpers import calculate_age
+from server.utils.language import language_directive
 from server.utils.llm_client import repair_json
 from server.utils.llm_client.client import get_llm_client
 from server.utils.rag.chroma import get_chroma_manager
@@ -50,6 +51,9 @@ async def stream_clinical_reasoning_with_tools(
     age = calculate_age(dob, encounter_date)
     reasoning_options = prompts["options"].get("reasoning", {})
     reasoning_prompt = DEFAULT_PROMPTS["prompts"]["reasoning"]["system"]
+    reasoning_prompt += language_directive(
+        config_manager.get_user_settings().get("output_language")
+    )
 
     # Format the clinical note
     formatted_note = ""
