@@ -12,7 +12,7 @@ from server.database.config.defaults.letters import DefaultLetters
 from server.database.config.defaults.prompts import DEFAULT_PROMPTS
 from server.database.config.defaults.templates import DefaultTemplates
 
-SCHEMA_VERSION = 5
+SCHEMA_VERSION = 6
 
 
 def run_migrations(patient_db):
@@ -610,5 +610,25 @@ def migrate_to_v5(cursor, db):
 
     except Exception as e:
         logging.error(f"Error during v5 migration: {e}")
+        db.rollback()
+        raise
+
+
+def migrate_to_v6(cursor, db):
+    """Add output_language column to user_settings.
+
+    Controls the language of LLM-generated output (notes, summaries, letters,
+    reasoning, chat). Defaults to 'auto' so existing behaviour is unchanged
+    (the model matches the language spoken in the encounter, including
+    code-switched Arabic/English dictation).
+    Accepted values: 'auto', 'english', 'arabic', 'bilingual'.
+    """
+    try:
+        cursor.execute("ALTER TABLE user_settings ADD COLUMN output_language TEXT DEFAULT 'auto'")
+        db.commit()
+        logging.info("Successfully added output_language column to user_settings")
+
+    except Exception as e:
+        logging.error(f"Error during v6 migration: {e}")
         db.rollback()
         raise

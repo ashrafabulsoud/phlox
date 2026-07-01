@@ -7,8 +7,9 @@ import { Text } from "@chakra-ui/react";
  */
 const MarkdownRenderer = ({ children, ...props }) => {
   return (
-    <ReactMarkdown
-      components={{
+    <div dir="auto">
+      <ReactMarkdown
+        components={{
         // Sanitize anchor tags to remove external links
         a: ({ href, children }) => {
           // Only allow internal anchor links (#)
@@ -44,7 +45,8 @@ const MarkdownRenderer = ({ children, ...props }) => {
       {...props}
     >
       {children}
-    </ReactMarkdown>
+      </ReactMarkdown>
+    </div>
   );
 };
 

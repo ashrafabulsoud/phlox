@@ -54,6 +54,19 @@ async def transcribe_audio(audio_buffer: bytes) -> dict[str, Union[str, float]]:
         raise
 
 
+def _whisper_language(config: dict) -> str | None:
+    """Return the transcription language, or None for auto-detect.
+
+    Defaults to auto-detect so mixed Arabic/English dictation is handled per
+    audio rather than forced to English. Set the ``WHISPER_LANGUAGE`` config
+    value to an ISO code (e.g. ``en`` or ``ar``) to force a specific language.
+    """
+    value = (config.get("WHISPER_LANGUAGE") or "").strip().lower()
+    if not value or value == "auto":
+        return None
+    return value
+
+
 async def _transcribe_local_whisper(
     audio_buffer: bytes, _config: dict
 ) -> dict[str, Union[str, float]]:
@@ -69,9 +82,11 @@ async def _transcribe_local_whisper(
         files = {"file": (filename, audio_buffer, content_type)}
         data = {
             "response_format": "verbose_json",
-            "language": "en",
             "temperature": "0.0",
         }
+        local_language = _whisper_language(_config)
+        if local_language:
+            data["language"] = local_language
 
         transcription_start = time.perf_counter()
 
@@ -119,12 +134,14 @@ async def _transcribe_external_api(
         files = {"file": (filename, audio_buffer, content_type)}
         data = {
             "model": config["WHISPER_MODEL"],
-            "language": "en",
             "temperature": "0.1",
             "vad_filter": "true",
             "response_format": "verbose_json",
             "timestamp_granularities[]": "segment",
         }
+        api_language = _whisper_language(config)
+        if api_language:
+            data["language"] = api_language
 
         transcription_start = time.perf_counter()
 

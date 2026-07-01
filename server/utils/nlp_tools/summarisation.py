@@ -8,6 +8,7 @@ from server.database.config.manager import config_manager
 from server.database.entities.patient import get_unique_primary_conditions
 from server.schemas.patient import Condition, Patient, Summary
 from server.utils.helpers import calculate_age, clean_think_tags
+from server.utils.language import language_directive
 from server.utils.llm_client import get_llm_client, repair_json
 
 # Set up module-level logger
@@ -166,6 +167,12 @@ async def summarise_encounter(patient: Patient) -> tuple[str, str | None]:
         + summary_json_instruction
         + "\n\n"
         + initial_summary_content
+    )
+
+    # Localize the human-readable summary_text; the separate ICD-10 condition
+    # extraction below is deliberately left in English for consistent grouping.
+    summary_system_content += language_directive(
+        config_manager.get_user_settings().get("output_language")
     )
 
     summary_request_body = [

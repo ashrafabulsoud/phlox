@@ -80,3 +80,23 @@ def test_reset_to_defaults():
     assert response.status_code == 200
     data = response.json()
     assert "reset" in data.get("message", "").lower()
+
+
+def test_user_settings_output_language_defaults_to_auto():
+    response = client.get("/api/config/user")
+    assert response.status_code == 200
+    data = response.json()
+    assert data.get("output_language", "auto") == "auto"
+
+
+def test_user_settings_output_language_round_trips():
+    # Persist a non-default choice and read it back.
+    save = client.post("/api/config/user", json={"output_language": "arabic"})
+    assert save.status_code == 200
+
+    read = client.get("/api/config/user")
+    assert read.status_code == 200
+    assert read.json()["output_language"] == "arabic"
+
+    # Restore the default so other tests are unaffected.
+    client.post("/api/config/user", json={"output_language": "auto"})

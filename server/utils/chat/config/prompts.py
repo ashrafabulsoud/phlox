@@ -10,6 +10,7 @@ from datetime import datetime
 
 from server.database.config.manager import config_manager
 from server.utils.helpers import calculate_age
+from server.utils.language import language_directive
 
 logger = logging.getLogger(__name__)
 
@@ -120,5 +121,7 @@ def build_system_messages(
         if template_data and template_fields:
             formatted_notes = _format_template_data(template_data, template_fields)
             content += "\n\n" + formatted_notes
+
+    content += language_directive(user_settings.get("output_language"))
 
     return [{"role": "system", "content": content}]

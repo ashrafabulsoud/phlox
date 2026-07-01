@@ -95,6 +95,31 @@ const UserSettingsPanel = ({
               ))}
             </Select>
           </Box>
+          <Box>
+            <Text fontSize="sm" mb="1">
+              Output Language
+            </Text>
+            <Select
+              size="sm"
+              value={userSettings.output_language || "auto"}
+              onChange={(e) =>
+                setUserSettings((prev) => ({
+                  ...prev,
+                  output_language: e.target.value,
+                }))
+              }
+              className="input-style"
+            >
+              <option value="auto">Auto (match dictation)</option>
+              <option value="english">English</option>
+              <option value="arabic">Arabic (العربية)</option>
+              <option value="bilingual">Bilingual (EN + AR)</option>
+            </Select>
+            <Text fontSize="xs" mt="1" opacity={0.7}>
+              Language of generated notes, summaries, letters and chat.
+              "Auto" follows whatever language you dictate in.
+            </Text>
+          </Box>
           <FormControl>
             <FormLabel fontSize="sm" fontWeight={"bold"}>
               Default Template
